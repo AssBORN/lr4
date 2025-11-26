@@ -1,9 +1,9 @@
-def fibonacci():
+def fibonacci(stop):
     a, b = 0, 1
-    while True:
+    while (stop-1)>=0:
         yield a
         a, b = b, a + b
+        stop = stop - 1
 
-fib = fibonacci()
-for _ in range(10):
-    print(next(fib)) 
+for num in fibonacci(10):
+    print(num)
