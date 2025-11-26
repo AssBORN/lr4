@@ -11,30 +11,17 @@ print("Исходные данные из файла:")
 for person in data:
     print(person)
 
-cleaned_data = list(map(
-    lambda x: {
-        'name': x['Имя'],
-        'age': int(x['Возраст']),
-        'salary': int(x['Зарплата']),
-        'department': x['Отдел']
-    },
-    data
-))
-
-print("\nОчищенные данные:")
-for person in cleaned_data:
-    print(person)
-
-it_employees = list(filter(lambda x: x['department'] == 'IT', cleaned_data))
+it_employees = list(filter(lambda x: x['Отдел'] == 'IT', data))
 print("\nIT отдел:")
 for emp in it_employees:
-    print(f"{emp['name']} - {emp['age']} лет - {emp['salary']} руб")
+    print(f"{emp['Имя']} - {emp['Возраст']} лет - {emp['Зарплата']} руб")
 
 increased_salary = list(map(
-    lambda x: {**x, 'salary': int(x['salary'] * 1.1)},
-    cleaned_data
+    lambda x: {**x, 'Зарплата': int(int(x['Зарплата']) * 1.1)},
+    data
 ))
 print("\nЗарплата после повышения:")
 for emp in increased_salary:
-    print(f"{emp['name']}: {emp['salary']} руб")
+    print(f"{emp['Имя']}: {emp['Зарплата']} руб")
+
 
